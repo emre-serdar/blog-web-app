@@ -4,7 +4,7 @@ import moment from 'moment/moment'
 
 
 const PostCard = ({ post }) => {
-    console.log(post);
+   
     return (
     <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
         <div className="relative overflow-hidden shadow-md pb-80 mb-6">
@@ -19,6 +19,7 @@ const PostCard = ({ post }) => {
 
         </div>
         <h1 className="transition duration-100 text-center mb-8 cursor-pointer hover:text-pink-600 text-3xl font-semibold">
+            {/* giving post's route/link for each title */}
             <Link href={`/post/{post.slug}`}>
                 {post.title}
             </Link>

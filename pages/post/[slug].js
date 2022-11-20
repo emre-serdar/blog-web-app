@@ -5,22 +5,22 @@ import { getPosts, getPostDetails } from '../../services'
 
 
 const PostDetails = ({ posts }) => {
- 
+  const p = posts[0]; // post is an array
   
   return (
     <div className='container mx-auto px-10 mb-8'>
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         <div className='col-span-1 lg:col-span-8'>
-              <PostDetail post={posts}/>
-              <Author  author={posts.author}/>
-              <Comments slug={posts.slug}/>
-              <CommentsForm slug={posts.slug} />
+              <PostDetail post={p}/>
+              <Author  author={p.author}/>
+              <Comments slug={p.slug}/>
+              <CommentsForm slug={p.slug} />
               
         </div>
         <div className='col-span-1 lg:col-span-4'>
             <div className='relative lg:sticky top-8'>
                 
-                {/* <PostWidget categories={posts.categories.map((category) => category.slug)} slug={posts.slug}  /> */}
+                <PostWidget categories={p.categories.map((category) => category.slug)} slug={p.slug}  /> 
                 
                 <Categories />
           

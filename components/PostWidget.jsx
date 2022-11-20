@@ -13,6 +13,7 @@ const PostWidget = ({ categories, slug }) => {
     if (slug) {
       getSimilarPosts(categories, slug).then((result) => {
         setRelatedPosts(result);
+        
       });
     } else {
     
@@ -23,6 +24,7 @@ const PostWidget = ({ categories, slug }) => {
     }
   }, [slug]);
   
+
   return (
     <div className='bg-white shadow-lg rounded-lg p-8 mb-8 '>
         {/* home page = no slug
