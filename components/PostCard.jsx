@@ -1,12 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
-
+import moment from 'moment/moment'
 
 
 const PostCard = ({ post }) => {
     console.log(post);
-    
-
     return (
     <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
         <div className="relative overflow-hidden shadow-md pb-80 mb-6">
@@ -34,15 +32,15 @@ const PostCard = ({ post }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
                 <span className='aling-middle'>
-                    {post.date}
+                    {moment(post.date).format('MMM DD, YYYY')}
                 </span>
             </div>
         </div>
         <p className='text-center text-lg text-gray-700 font-normal px-4 lg:px-20 mb-8'>{post.excerpt}</p>
         
-        {/*  seperating excerpt from AuthorName and Date*/}
+        {/* setting Countunie Reading button's link to post's slug*/}
         <div className='text-center'>
-            <Link href={`/post${post.slug}`}>
+            <Link href={`/post/${post.slug}`}>
                 <span className='transition duration-500 tranform hover:translate-y-1 inline-block bg-gray-400 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer'>
                     Okumaya devam et
                 </span>
