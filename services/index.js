@@ -107,32 +107,45 @@ export const getPostDetails = async (slug) => {
   const query = gql`
     query GetPostDetails($slug : String!) {
         # Only get the data that has the same slug with our post
-        posts(where: {slug: $slug}) {
-            title
-            excerpt
-            featuredImage {
-                url
-            }
-            author {
-                name
-                bio
-            }
-            date
+        post(where: {slug: $slug}) {
+          title
+          excerpt
+          featuredImage {
+              url
+          }
+          author {
+            name
+            bio
+          }
+          date
+          slug
+          content {
+            raw
+          }
+          categories {
+            name
             slug
-            content {
-                raw
-            }
-            categories {
-                name
-                slug
-            }
+          }
         }
-    }
+      }
   `;
     
     
     const result = await request(graphqlAPI, query, { slug });
     
-    return result.posts;
+    return result.post;
 
+}
+
+export const submitComment = async (obj) => {
+   
+    const result = await fetch('/api/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(obj),
+   });
+
+   return result.json();
 }
