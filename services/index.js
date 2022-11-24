@@ -137,6 +137,7 @@ export const getPostDetails = async (slug) => {
 
 }
 
+//submit comment
 export const submitComment = async (obj) => {
    
     const result = await fetch('/api/comments', {
@@ -149,3 +150,44 @@ export const submitComment = async (obj) => {
 
    return result.json();
 }
+
+//get comments
+export const getComments = async (slug) => {
+  const query = gql`
+      query GetComments($slug: String!) {
+          comments(where: {post: { slug: $slug}}){
+              name
+              createdAt
+              comment
+          }
+      }
+  `;
+  
+ 
+  const result = await request(graphqlAPI, query, { slug });
+
+  return result.comments;
+};
+
+//featured posts
+export const getFeaturedPosts = async () => {
+  const query = gql`
+    query GetCategoryPost() {
+      posts(where: {featuredPost: true}) {
+        author {
+          name
+        }
+        featuredImage {
+          url
+        }
+        title
+        slug
+        date
+      }
+    }   
+  `;
+
+  const result = await request(graphqlAPI, query);
+  
+  return result.posts;
+};

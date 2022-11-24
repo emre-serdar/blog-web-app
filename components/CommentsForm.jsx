@@ -12,7 +12,7 @@ const nameEl = useRef();
 const emailEl = useRef();
 const storeDataEl = useRef();
 
-
+//using local storage to save user's name and email
 useEffect(() => {
   nameEl.current.value = window.localStorage.getItem('name');
   emailEl.current.value = window.localStorage.getItem('email');
