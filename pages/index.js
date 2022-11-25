@@ -10,6 +10,8 @@ export default function Home({ posts }) {
         <title>Erdi Serdar</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      
       <FeaturedPosts />
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
         
