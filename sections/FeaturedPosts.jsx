@@ -59,8 +59,8 @@ const FeaturedPosts = () => {
 
 
   const customRightArrow = (
-    <div id='right-arrow-button' className="absolute arrow-btn right-0 text-center py-3 cursor-pointer bg-pink-600 rounded-full text-3xl " >
-      {/* <svg
+    <div id='right-arrow-button' className="absoulte arrow-btn right-0 text-center py-3 cursor-pointer bg-pink-600 rounded-full text-3xl " >
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-6 text-white w-full"
         fill="none"
@@ -73,15 +73,18 @@ const FeaturedPosts = () => {
           strokeWidth="2"
           d="M14 5l7 7m0 0l-7 7m7-7H3"
         />
-      </svg> */} 
-      {'>'}
+      </svg>  
+      
 
     </div>
   );
 
+
+
+
   return (
     <div className="mb-8">
-      <Carousel infinite customLeftArrow={customLeftArrow} responsive={responsive} itemClass="px-4">
+      <Carousel infinite customRightArrow={customRightArrow} responsive={responsive} itemClass="px-4">
         {dataLoaded && featuredPosts.map((post, index) => (
           <FeaturedPostCard key={index} post={post} />
         ))}
