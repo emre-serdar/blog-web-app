@@ -10,7 +10,7 @@ const PostDetail = ({ post }) => {
     let modifiedText = text; 
     
     //object detection, since content may include text, images, bold-text etc.
-    if (typeof(obj)) {
+    if (obj) {
       if (obj.bold) {  
         modifiedText = (<b key={index}>{text}</b>);
       }
@@ -92,8 +92,6 @@ const PostDetail = ({ post }) => {
             })}
         </div>  
           
-          
-        
       </div>
 
     </div>
