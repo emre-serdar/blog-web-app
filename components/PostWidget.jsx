@@ -26,26 +26,25 @@ const PostWidget = ({ categories, slug }) => {
   
 
   return (
-    <div className='bg-white shadow-lg rounded-lg p-8 pb-12 mb-8 '>
+    <div className='bg-gradient shadow-lg rounded-lg p-8 pb-12 mb-8 '>
         {/* home page = no slug
             If there is slug, get Related Post, If there is no slug, get Recent Posts*/}
-        <h3 className="text-xl mb-8 font-semibold border-b pb-4">{slug ? 'Related Posts' : 'Recent Posts'}</h3>
+        <h3 className="text-xl mb-8 font-semibold border-b pb-4 text-white">{slug ? 'Related Posts' : 'Recent Posts'}</h3>
         {relatedPosts.map((post, index) => (
         <div key={index} className="flex items-center w-full mb-4">
-          <div className='w-16 flex-none'>
+          <div className='w-16 flex-none post-widget-img'>
             <img 
                 alt={post.title}
-                height="60px"
-                width="60px"
-                className='align-midle rounded-full'
+                
+                className='align-midle'
                 src={post.featuredImage.url}
               />
           </div>
           <div className='flex-grow ml-4'>
-              <p className='text-gray-500 font-xs'>
+              <p className='text-slate-400 font-xs'>
                 {moment(post.date).format('MMM DD, YYYY')}
               </p>
-              <Link href={`/post/${post.slug}`} key={post.title} className="text-md">
+              <Link href={`/post/${post.slug}`} key={post.title} className="text-md text-slate-300">
                   {post.title}
               </Link>
           </div>
