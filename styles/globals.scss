@@ -93,3 +93,29 @@ a {
     min-height: 60px;
   }
 }
+
+// making list item to numbered-list
+ol{
+  list-style-type: decimal;
+  margin-bottom: 4px;
+  li{
+    margin-bottom: 2px;
+  }
+}
+
+//
+
+@media (max-width: 640px) {
+  .post-detail-card{
+    padding-left: 0.50rem/* 0.25-> 4px */;
+    padding-right: 0.50rem/* 0.25 -> 4px */;
+  }
+  
+}
+
+@media (max-width: 767px){
+  .hamburger{
+    display: block;
+  }
+}
+

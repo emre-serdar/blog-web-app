@@ -17,8 +17,8 @@ const Comments = ({ slug }) => {
   return (
     <>
       {comment.length > 0 && (
-        <div className='bg-white shadow-lg rounded-lg p-8 pb-12 mb-8'>
-          <h3 className='text-xl mb-8 font-semibold border-b pb-4'>
+        <div className='bg-gradient shadow-lg rounded-lg p-8 pb-12 mb-8'>
+          <h3 className='text-xl mb-8 font-semibold border-b pb-4 text-white'>
               {comments.length} 
               {' '}
               Comments
@@ -32,7 +32,7 @@ const Comments = ({ slug }) => {
                   {' '}
                   {moment(comment.createdAt).format('MMM DD, YYYY')}
                 </p>
-                <p className='whitespace-pre-line text-gray-600 w-full'>{parse(comment.comment)}</p>
+                <p className='whitespace-pre-line text-gray-900 w-full'>{parse(comment.comment)}</p>
               </div>
           ))}
         </div>

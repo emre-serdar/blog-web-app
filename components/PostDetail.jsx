@@ -10,7 +10,7 @@ const PostDetail = ({ post }) => {
     let modifiedText = text; 
     
     //object detection, since content may include text, images, bold-text etc.
-    if (obj) {
+    if (typeof(obj)) {
       if (obj.bold) {  
         modifiedText = (<b key={index}>{text}</b>);
       }
@@ -23,7 +23,13 @@ const PostDetail = ({ post }) => {
         modifiedText = (<u key={index}>{text}</u>);
       }
       if (obj.type=='link'){
-        modifiedText = (<Link key={index} href={obj.href}>{obj.children[0].text}</Link>);
+        modifiedText = (<Link key={index} href={obj.href} className='text-blue-300'>{obj.children[0].text}</Link>);
+      }
+      if (obj.type=='numbered-list') { 
+        console.log(obj.children[0].children[0].children[0].text);
+        modifiedText = (<ol key={index}> 
+                          {obj.children.map((obje, index) => <li> {obj.children[index].children[0].children[0].text} </li> )}
+                        </ol>)
       }
     }
 
@@ -43,6 +49,7 @@ const PostDetail = ({ post }) => {
             height={obj.height}
             width={obj.width}
             src={obj.src}
+            className='mb-3'
           />
         );
       default:
@@ -62,7 +69,7 @@ const PostDetail = ({ post }) => {
           className='object-top h-full w-full rounded-t-lg'
          />
       </div>  
-      <div className='px-4 lg:px-0'>
+      <div className='px-4 lg:px-0 '>
         <div className='flex items-center mb-8 w-full'>
           <div className="flex items-center mb-4 lg:mb-0 w-full lg:w-auto mr-8 ">
                  <p className="inline align-middle text-slate-200 ml-2 font-medium text-lg">{post.author.name}</p> 
@@ -80,7 +87,7 @@ const PostDetail = ({ post }) => {
         <div className='text-slate-200'>
           {post.content.raw.children.map((typeObj, index) => {
               const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
-
+              
               return getContentFragment(index, children, typeObj, typeObj.type);
             })}
         </div>  

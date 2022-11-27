@@ -56,12 +56,12 @@ const handleCommitSubmission = () => {
   
 
   return (
-    <div className='bg-white shadow-lg rounded-lg p-8 pb-12 mb-8'>
-      <h3 className='text-xl mb-8 font-semibold border-b pb-4'>CommentsForm </h3>
+    <div className='bg-gradient shadow-lg rounded-lg p-8 pb-12 mb-8'>
+      <h3 className='text-xl mb-8 font-semibold border-b pb-4 text-white'>CommentsForm </h3>
       <div className='grid grid-cols-1 gap-4 mb-4'>
         <textarea 
           ref={commentEl} 
-          className='p-4 outline-none w-full roundend-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700'
+          className='p-4 outline-none w-full roundend-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700 rounded'
           placeholder='Comment'
           name="comment"
         />
@@ -69,13 +69,13 @@ const handleCommitSubmission = () => {
       <div className='grid grid-cols-1 gap-4 mb-4 lg-grid-cols-2'>
         <input 
           type="text" ref={nameEl}
-          className='py-2 outline-none w-full roundend-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700'
+          className='py-2 outline-none w-full roundend-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700 rounded'
           placeholder='Name'
           name="name"
         />
         <input 
           type="text" ref={emailEl}
-          className='py-2 outline-none w-full roundend-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700'
+          className='py-2 outline-none w-full roundend-lg focus:ring-2 focus:ring-gray-200 bg-gray-100 text-gray-700 rounded'
           placeholder='Email'
           name="email" 
         />
@@ -83,7 +83,7 @@ const handleCommitSubmission = () => {
       <div className="grid grid-cols-1 gap-4 mb-4">
         <div>
           <input ref={storeDataEl} type="checkbox" id="storeData" name="storeData" value="true"/>
-          <label className='text-gray-500 cursor-pointer ml-2' htmlFor='storeData'>Save my e-mail and name for next time I comment.</label>
+          <label className='text-gray-200 cursor-pointer ml-2' htmlFor='storeData'>Save my e-mail and name for next time I comment.</label>
         </div>
 
       </div>
@@ -94,11 +94,11 @@ const handleCommitSubmission = () => {
         <button 
           type='button' 
           onClick={handleCommitSubmission}
-          className='transiton duration-500 ease hover:bg-indigo-900 inline-block bg-pink-600 text-lg rounded-full text-white px-8 py-3 cursor-pointer'
+          className='transiton duration-500 ease hover:bg-indigo-900 inline-block btn-grad text-lg rounded-full text-white px-8 py-3 cursor-pointer'
           >
           PostComment   
         </button>
-        {showSuccesMessage && <span className='text-xl float-right font-semi-bold mt-3 text-green-500'>Comment submitted for review.</span>}
+        {showSuccesMessage && <span className='text-xl float-right font-semi-bold mt-3 text-green-700'>Comment submitted for review.</span>}
       </div>
       
 
