@@ -20,6 +20,9 @@ const Header = () => {
             <div className='md:float-left block'>
                 <Link href="/">
                     <span className='cursor-pointer font-bold text-4xl text-white'>Erdi Serdar</span>
+                    <p>
+                        <span className=' ml-4 text-gray-500 text-sm '> Austro-Libertarianism</span>
+                    </p>
                 </Link>
             </div>
             {/* <input type="checkbox" id="hamburger-input" class="burger-shower" />
