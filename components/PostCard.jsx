@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
                 </span>
             </div>
         </div>
-        <p className='text-center text-lg text-slate-200 font-light px-4 lg:px-0 mb-8'>{post.excerpt}</p>
+        <p className='text-center text-lg text-slate-200 font-light px-6 lg:px-0 mb-8'>{post.excerpt}</p>
         
         {/* setting Countunie Reading button's link to post's slug*/}
         <div className='text-center'>
