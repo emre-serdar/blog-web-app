@@ -5,6 +5,7 @@ import { FeaturedPosts } from '../sections';
 
 export default function Home({ posts }) {
   
+
   return (
     <div className="container mx-auto px-8 mb-8 post-detail-card ">
       <Head>
@@ -16,7 +17,7 @@ export default function Home({ posts }) {
       <FeaturedPosts />
       <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 '>
         
-        <div className="grid lg:grid-cols-3 grid-cols-1 lg:col-span-9 col-span-1 gap-2">
+        <div className="grid lg:grid-cols-3 grid-cols-1 lg:col-span-9 col-span-1 gap-4">
           
             {posts.map((post, index)=><PostCard post={post} key={post.title} />)}
         </div>  

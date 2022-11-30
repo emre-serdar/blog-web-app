@@ -27,18 +27,21 @@ const Header = () => {
             </div>
             {/* <input type="checkbox" id="hamburger-input" class="burger-shower" />
             <label for="hamburger-input" className='hamburger-menu md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>&#9776;</label> */}
-            <div className='hidden md:float-left md:contents categories'>
-            
-                {categories.map((category, index)=> (
-                    <Link key={index} href={`/category/${category.slug}`} >
-                        
-                        <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
-                        
-                            {category.name}
-                        </span>
-                    </Link>
-                ))}
-            </div>
+            <nav className='hidden md:float-left md:contents categories'>
+                <ul>
+                    {categories.map((category, index)=> (
+                        <li>
+                            <Link className=' '  key={index} href={`/category/${category.slug}`} >
+                                
+                                <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
+                                    {category.name}
+                                </span>
+                            </Link>
+                        </li>
+                        // <a key= {index} href={`/category/${category.slug}`} className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>{category.name}</a>
+                    ))}
+                </ul>        
+            </nav>
             
         </div>
                   
