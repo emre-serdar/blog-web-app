@@ -19,7 +19,7 @@ export default function Home({ posts }) {
         
         <div className="grid lg:grid-cols-3 grid-cols-1 lg:col-span-9 col-span-1 gap-4">
           
-            {posts.map((post, index)=><PostCard post={post} key={post.title} />)}
+            {posts.map((post, index)=><PostCard post={post} key={index} />)}
         </div>  
         
         <div className="lg:col-span-3 ">
