@@ -26,13 +26,15 @@ const PostCard = ({ post }) => {
     return (
     <div className="bg-gradient shadow-lg rounded-lg p-0 lg:p-6 pb-12 mb-4">
         <div className="relative h-44 overflow-hidden shadow-md pb-44 mb-6 ">
-            <img 
-                src={post.featuredImage.url} 
-                alt={post.title}
-                className=" 
-                 transition-all absolute h-44 w-full
-                 object-cover shadow-lg rounded-t-lg lg:rounded-lg" 
-            />
+            <Link href={`/post/${post.slug}`}>
+                <img 
+                    src={post.featuredImage.url} 
+                    alt={post.title}
+                    className=" 
+                    transition-all absolute h-44 w-full
+                    object-cover shadow-lg rounded-t-lg lg:rounded-lg" 
+                />
+            </Link>
 
         </div>
         <h1 className="transition duration-100 flex text-center justify-center mb-4 h-20 cursor-pointer text-white hover:text-gray-400 text-xl font-semibold">

@@ -23,7 +23,7 @@ const PostDetail = ({ post }) => {
         modifiedText = (<u key={index}>{text}</u>);
       }
       if (obj.type=='link'){
-        modifiedText = (<Link key={index} href={obj.href} className='text-blue-300'>{obj.children[0].text}</Link>);
+        modifiedText = (<Link key={index} href={obj.href} className='text-blue-300 '>{obj.children[0].text}</Link>);
       }
       if (obj.type=='numbered-list') { 
         console.log(obj.children[0].children[0].children[0].text);
@@ -60,7 +60,7 @@ const PostDetail = ({ post }) => {
 
 
   return (
-    <div className='bg-gradient shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
+    <div className='bg-gradient shadow-lg rounded-lg lg:p-8 pb-12 mb-8 p-5  '>
       <div className='relative overflow-hidden shadow-md mb-6'>
         
         <img 
@@ -84,7 +84,7 @@ const PostDetail = ({ post }) => {
             </div>
         </div>
         <h1 className="mb-8 text-3xl font-semibold text-white">{post.title}</h1>
-        <div className='text-slate-200'>
+        <div className='text-slate-200 text-justify'>
           {post.content.raw.children.map((typeObj, index) => {
               const children = typeObj.children.map((item, itemindex) => getContentFragment(itemindex, item.text, item));
               
