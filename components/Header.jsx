@@ -18,10 +18,11 @@ const Header = () => {
     
 
   return (
+
     <div className='container mx-auto px-10 mb-8'>
-        <div className="border-b w-full  max-w-full lg:inline-block flex items-center justify-between border-white py-8  ">
+        <div className="border-b  lg:inline-block flex items-center justify-between border-white py-8 w-full ">
             <div className='md:float-left block'>
-                <Link href="/">
+                <Link scroll={false} href="/">
                     <span className='cursor-pointer font-bold text-4xl text-white'>Erdi Serdar</span>
                     <p>
                         <span className=' ml-4 text-gray-500 text-sm '> Austro-Libertarianism</span>
@@ -29,19 +30,18 @@ const Header = () => {
                 </Link>
             </div>
             <FiMenu className='hamburger lg:hidden float-right text-white h-10 w-10 cursor-pointer' onClick={() => setOpen(!open)} />
-            <nav className={`${open ? "block" : "hidden"} lg:float-right lg:contents `}>
+            <nav className={`${open ? "block" : "hidden"} w-full lg:float-right lg:contents  `}>
                 
                 <ul className=''>
                     {categories.map((category, index)=> (
                         <li>
                             <Link className=' '  key={index} href={`/category/${category.slug}`} >
-                                
                                 <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
                                     {category.name}
                                 </span>
                             </Link>
                         </li>
-                        // <a key= {index} href={`/category/${category.slug}`} className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>{category.name}</a>
+                        
                     ))}
                 </ul>        
             </nav>
