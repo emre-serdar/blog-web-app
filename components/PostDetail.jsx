@@ -8,9 +8,9 @@ const PostDetail = ({ post }) => {
  
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text; 
-    
+    console.log(modifiedText);
     //object detection, since content may include text, images, bold-text etc.
-    if (obj) {
+    if (type) {
       if (obj.bold) {  
         modifiedText = (<b key={index}>{text}</b>);
       }
@@ -26,7 +26,7 @@ const PostDetail = ({ post }) => {
         modifiedText = (<Link key={index} href={obj.href} className='text-blue-300 '>{obj.children[0].text}</Link>);
       }
       if (obj.type=='numbered-list') { 
-        console.log(obj.children[0].children[0].children[0].text);
+        
         modifiedText = (<ol key={index}> 
                           {obj.children.map((obje, index) => <li> {obj.children[index].children[0].children[0].text} </li> )}
                         </ol>)

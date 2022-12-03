@@ -21,8 +21,8 @@ const Header = () => {
     }
   return (
 
-    <div className='container mx-auto px-10 mb-8'>
-        <div className="border-b  lg:inline-block flex items-center justify-between border-white py-8 w-full ">
+    <div className=' container mx-auto px-10 mb-8 '>
+        <div className="border-b  lg:inline-block flex items-center justify-between border-white py-7  w-full ">
             <div className='md:float-left block'>
                 <Link scroll={false} href="/">
                     <span className='cursor-pointer font-bold text-4xl text-white'>Erdi Serdar</span>
@@ -58,7 +58,7 @@ const Header = () => {
                     {categories.map((category, index)=> (
                             <li className='inline'>
                                 <Link className=' '  key={index} href={`/category/${category.slug}`} >
-                                    <span className='md:float-right mt-2 align-middle text-sky-100 ml-4 mb-16 font-semibold cursor-pointer'>
+                                    <span className='mobile-category-menu md:float-right mt-2 align-middle text-sky-100 ml-4 mb-16 font-semibold cursor-pointer'>
                                         {category.name}
                                     </span>
                                 </Link>
