@@ -113,9 +113,15 @@ ol{
 }
 
 @media (max-width: 767px){
-  .hamburger{
-    max-width: 100px;
-  }
+ .fpost{
+  margin-top: 40px;
+ }
 }
 
 
+.nav{
+  background-image: linear-gradient(90deg, #09203f 0%, #537895 100%);
+  top: 15%;
+  padding-bottom: 10px; 
+
+}
