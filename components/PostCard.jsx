@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import moment from 'moment/moment'
-import { textContent } from 'domutils'
+
 
 
 const PostCard = ({ post }) => {

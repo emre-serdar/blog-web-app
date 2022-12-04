@@ -41,6 +41,7 @@ const Header = () => {
                         
                         <li>
                             <Link className=' '  key={index} href={`/category/${category.slug}`} >
+                                
                                 <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
                                     {category.name}
                                 </span>
