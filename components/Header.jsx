@@ -2,12 +2,15 @@ import React, { useContext, useState, useEffect } from 'react'
 import { getCategories } from '../services';
 import Link from 'next/link'
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai'
+import { useRouter } from 'next/router';
 
 
 const Header = () => {
     const [categories, setCategories] = useState([]);
     const [open, setOpen] = useState(false);
 
+    const router = useRouter();
+    
     useEffect(() => {
       getCategories().then((newCategories) => {
         setCategories(newCategories);
@@ -32,9 +35,10 @@ const Header = () => {
                 </Link>
             </div>
            
-            <div className='hidden md:flex w-full lg:float-right lg:contents '>   
+            <div className=' hidden md:flex w-full lg:float-right lg:contents '>   
                 <ul className=''>
                     {categories.map((category, index)=> (
+                        
                         <li>
                             <Link className=' '  key={index} href={`/category/${category.slug}`} >
                                 <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
