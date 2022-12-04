@@ -35,11 +35,11 @@ const Header = () => {
                 </Link>
             </div>
            
-            <div className=' hidden md:flex w-full lg:float-right lg:contents '>   
+            <div className=' hidden md:contents w-full lg:float-right lg:contents '>   
                 <ul className=''>
                     {categories.map((category, index)=> (
                         
-                        <li>
+                        <li className='inline'>
                             <Link className=' '  key={index} href={`/category/${category.slug}`} >
                                 
                                 <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
@@ -63,7 +63,7 @@ const Header = () => {
                     {categories.map((category, index)=> (
                             <li className='inline'>
                                 <Link className=' '  key={index} href={`/category/${category.slug}`} >
-                                    <span className='mobile-category-menu md:float-right mt-2 align-middle text-sky-100 ml-4 mb-16 font-semibold cursor-pointer'>
+                                    <span className='md:float-right mt-2 align-middle text-sky-100 ml-4 mb-16 font-semibold cursor-pointer'>
                                         {category.name}
                                     </span>
                                 </Link>

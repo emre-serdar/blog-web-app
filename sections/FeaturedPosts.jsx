@@ -31,7 +31,7 @@ const FeaturedPosts = () => {
     <div className="mb-8">
       <Swiper 
         effect={"coverflow"}
-        slidesPerView={5}
+        
         spaceBetween={30}
         grabCursor={true}
         centeredSlides={true}
@@ -46,6 +46,28 @@ const FeaturedPosts = () => {
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
+        
+        // responsive breakpoints 
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 10,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1278: {
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+        }}
+          
+               
       >
         {dataLoaded && featuredPosts.map((post, index) => (
           <SwiperSlide><FeaturedPostCard key={index} post={post} /></SwiperSlide>
