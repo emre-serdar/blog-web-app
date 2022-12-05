@@ -8,7 +8,7 @@ const PostDetail = ({ post }) => {
  
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text; 
-    console.log(modifiedText);
+    
     //object detection, since content may include text, images, bold-text etc.
     if (type) {
       if (obj.bold) {  
