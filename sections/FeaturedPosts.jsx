@@ -31,7 +31,7 @@ const FeaturedPosts = () => {
     <div className="mb-8">
       <Swiper 
         effect={"coverflow"}
-        
+        loop={true}
         spaceBetween={30}
         grabCursor={true}
         centeredSlides={true}
@@ -42,7 +42,7 @@ const FeaturedPosts = () => {
           modifier: 1,
           slideShadows: true
         }}
-        initialSlide={3}
+        initialSlide={7}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
