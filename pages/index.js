@@ -42,6 +42,8 @@ export async function getStaticProps(){
   const posts = await (getPosts2()) || [];
 
   return {
-    props: { posts }
+    props: { posts },
+    revalidate: 10, // In seconds
   }
+  
 }
