@@ -9,9 +9,13 @@
 <h2> Tech Stack: </h2> 
   <p> Next.js  |  React.js  |  GraphQL  |  Tailwind.css  |  Hygraph(GraphQL Content Platform)  |  SASS </p>
   
-<h2> User's WordPress Website before vs. Next.js Website now: </h2>
+<h2> User's WordPress Website before </h2>
 
-<img src="https://drive.google.com/file/d/1-0d-DWI_ZPpHdu4s4IbHDZGUm09Qhh8t/view?usp=sharing" />
+<img src="https://drive.google.com/uc?export=view&id=1-0d-DWI_ZPpHdu4s4IbHDZGUm09Qhh8t" />
+
+<h2> User's Next.js Website now <h2>
+
+<img src="https://drive.google.com/uc?export=view&id=1IkSjiMAB_XF6K8P46w8eVGeHwrqTyrjE" />
 
 <h2> Why Next.js </h2>
 
@@ -34,4 +38,4 @@
 - Schema
   - To create models.
 - Content 
-  - To create content using models that are created.
+  - To create content using models that are created. (Client uses this section to add, delete, or edit his blog posts.)
