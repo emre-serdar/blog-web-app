@@ -8,33 +8,35 @@ const PostDetail = ({ post }) => {
  
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text; 
-    
+   
     //object detection, since content may include text, images, bold-text etc.
-    if (type) {
-      if (obj.bold) {  
-        modifiedText = (<b key={index}>{text}</b>);
-      }
-
-      if (obj.italic) {
-        modifiedText = (<em key={index}>{text}</em>);
-      }
-
-      if (obj.underline) {
-        modifiedText = (<u key={index}>{text}</u>);
-      }
-      if (obj.type=='link'){
-        modifiedText = (<Link key={index} href={obj.href} className='text-blue-300 '>{obj.children[0].text}</Link>);
-      }
-      if (obj.type=='numbered-list') { 
-        
-        modifiedText = (<ol key={index}> 
-                          {obj.children.map((obje, index) => <li> {obj.children[index].children[0].children[0].text} </li> )}
-                        </ol>)
-      }
+    if (obj.bold) {  
+      modifiedText = (<b key={index}>{text}</b>);
     }
+
+    if (obj.italic) {
+      modifiedText = (<em key={index}>{text}</em>);
+    }
+
+    if (obj.underline) {
+      modifiedText = (<u key={index}>{text}</u>);
+    }
+    if (obj.type=='link'){
+        modifiedText = (<Link key={index} href={obj.href} className='text-blue-300 '>{obj.children[0].text}</Link>);
+        
+    }
+    if (obj.type=='numbered-list') { 
+        
+      modifiedText = (<ol key={index}> 
+                          {obj.children.map((obje, index) => <li> {obj.children[index].children[0].children[0].text} </li> )}
+                      </ol>)
+    }
+    
 
     //what to return according to objects detected 
     switch (type) {
+      case 'heading-two':
+        return <h2 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>;
       case 'heading-three':
         return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
       case 'paragraph':
@@ -66,7 +68,7 @@ const PostDetail = ({ post }) => {
         <img 
           src={post.featuredImage.url}
           alt={post.title}
-          className='object-top h-full w-full rounded-t-lg'
+          className='object-top xl:h-80 lg:h-48 md:h-60 block ml-auto mr-auto scale-150  rounded-t-lg'
          />
       </div>  
       <div className='px-0 lg:px-0 '>

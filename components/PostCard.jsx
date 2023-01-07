@@ -6,8 +6,9 @@ import moment from 'moment/moment'
 
 const PostCard = ({ post }) => {
     
+    // excerpt length
     const getExcerpt = (excerpt) => {
-        let wordLimit = 22; // 
+        let wordLimit = 22; 
         let wordsArr = excerpt.split(' '); //splittin according to spaces
         if (wordsArr.length < wordLimit) {
             return excerpt;
