@@ -4,7 +4,7 @@
 
 <h2> Description: </h2>
 
-<p> A blog web application for the client to have both a better UX/UI and performance.  <p>
+<p> A blog web application for the client to have both better UX/UI and performance.  <p>
 
 <h2> Tech Stack: </h2> 
   <p> Next.js  |  React.js  |  GraphQL  |  Tailwind.css  |  Hygraph(GraphQL Content Platform)  |  SASS </p>
