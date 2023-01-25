@@ -17,13 +17,18 @@
 
 <img src="https://drive.google.com/uc?export=view&id=1IkSjiMAB_XF6K8P46w8eVGeHwrqTyrjE" />
 
-<h2> Why Next.js </h2>
+<h2> React.js </h2>
+
+- Reusable components such as PostCard, Header, PostDetail etc.
+- React hooks such as useState, useEffect, and useRef.
+
+<h2> Next.js </h2>
 
 - Pre-rendering with SSG (high performance in terms of loading times).
 - Dynamic built-in routing, "pages/posts/[slug]"
 - Compatibility with React.js. 
 
-<h2> Why GraphQL </h2>
+<h2> GraphQL </h2>
 
 - Ability to avoid over-fetching and ability to get the exact data wished. (Faster than usual REST)
 - Client-driven architecture.
