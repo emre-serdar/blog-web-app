@@ -10,7 +10,9 @@ const getGraphQLClient = () => {
   return new GraphQLClient(graphqlAPI, { headers });
 };
 
-const requestWithAuth = async (query, variables) => {
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const requestWithAuth = async (query, variables, retries = 3) => {
   try {
     if (!graphqlAPI) {
       throw new Error('NEXT_PUBLIC_HYGRAPH_ENDPOINT is not defined');
@@ -18,6 +20,13 @@ const requestWithAuth = async (query, variables) => {
     const client = getGraphQLClient();
     return await client.request(query, variables);
   } catch (error) {
+    const status = error.response?.status;
+    if (retries > 0 && (status === 429 || (status >= 500 && status < 600))) {
+      const delay = 1000 * Math.pow(2, 3 - retries); // 1s, 2s, 4s
+      console.warn(`Request failed with status ${status}. Retrying in ${delay}ms...`);
+      await wait(delay);
+      return requestWithAuth(query, variables, retries - 1);
+    }
     console.error('GraphQL Request Error:', error);
     console.error('Endpoint:', graphqlAPI);
     console.error('Token present:', !!process.env.HYGRAPH_TOKEN);
