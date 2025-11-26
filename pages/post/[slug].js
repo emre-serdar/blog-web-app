@@ -3,13 +3,11 @@ import { useRouter } from 'next/router'
 import { Author, Categories, Comments, CommentsForm, PostDetail, PostWidget, Loader } from '../../components'
 import { getPosts, getPostDetails } from '../../services'
 
-
-
 const PostDetails = ({ post }) => {
   const router = useRouter();
 
-  if (router.isFallback) {
-    return <Loader />
+  if (!post) {
+    return <Loader />;
   }
 
   return (
@@ -25,7 +23,7 @@ const PostDetails = ({ post }) => {
         <div className='col-span-1 lg:col-span-4'>
           <div className='relative lg:sticky top-8'>
 
-            <PostWidget categories={post.categories.map((category) => category.slug)} slug={post.slug} />
+            <PostWidget categories={post?.categories?.map((category) => category.slug)} slug={post?.slug} />
 
             <Categories />
 
@@ -65,6 +63,6 @@ export async function getStaticPaths() {
 
   return {
     paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-    fallback: true
+    fallback: 'blocking'
   };
 }
