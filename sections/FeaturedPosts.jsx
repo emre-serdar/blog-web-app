@@ -29,7 +29,7 @@ const FeaturedPosts = () => {
 
   return (
     <div className="mb-8">
-      <Swiper 
+      <Swiper
         effect={"coverflow"}
         loop={true}
         spaceBetween={30}
@@ -46,7 +46,7 @@ const FeaturedPosts = () => {
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
-        
+
         // responsive breakpoints 
         breakpoints={{
           640: {
@@ -66,8 +66,8 @@ const FeaturedPosts = () => {
             spaceBetween: 50,
           },
         }}
-          
-               
+
+
       >
         {dataLoaded && featuredPosts.map((post, index) => (
           <SwiperSlide><FeaturedPostCard key={index} post={post} /></SwiperSlide>

@@ -218,17 +218,19 @@ export const submitComment = async (obj) => {
 export const getComments = async (slug) => {
   const query = gql`
     query GetComments($slug: String!) {
-      comments(where: { post: { slug: $slug } }) {
-        name
-        createdAt
-        comment
+      post(where: { slug: $slug }) {
+        comments {
+          name
+          createdAt
+          comment
+        }
       }
     }
   `;
 
   const result = await requestWithAuth(query, { slug });
 
-  return result.comments;
+  return result.post?.comments || [];
 };
 
 //featured posts
