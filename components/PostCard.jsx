@@ -2,8 +2,6 @@ import React from 'react'
 import Link from 'next/link'
 import moment from 'moment/moment'
 
-
-
 const PostCard = ({ post }) => {
 
     // excerpt length
@@ -25,7 +23,7 @@ const PostCard = ({ post }) => {
 
 
     return (
-        <div className="bg-gradient shadow-lg rounded-lg p-0 lg:p-6 pb-12 mb-4">
+        <div className="bg-gradient shadow-lg rounded-lg p-0 lg:p-6 pb-12 mb-4 hover:-translate-y-2 hover:shadow-2xl transition duration-300 group">
             <div className="relative h-44 overflow-hidden shadow-md pb-44 mb-6 ">
                 <Link href={`/post/${post.slug}`}>
                     <img
@@ -33,7 +31,7 @@ const PostCard = ({ post }) => {
                         alt={post.title}
                         className=" 
                     transition-all absolute h-44 w-full
-                    object-cover shadow-lg rounded-t-lg lg:rounded-lg"
+                    object-cover shadow-lg rounded-t-lg lg:rounded-lg group-hover:scale-105 duration-300"
                     />
                 </Link>
 

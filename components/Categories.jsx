@@ -16,12 +16,12 @@ const Categories = () => {
   return (
     <div className="bg-gradient shadow-lg rounded-lg p-8 pb-12 mb-8">
       <h3 className="text-xl mb-8 font-semibold border-b pb-4 text-gray-800">
-        Categories
+        Kategoriler
       </h3>
       {/* Mapping throug categories to create a slug for each */}
       {categories.map((category, index) => (
         <Link key={index} href={`/category/${category.slug}`}>
-          <span className={`cursor-pointer block ${(index === categories.length - 1) ? 'border-b-0' : 'border-b'} pb-3 mb-3 text-gray-600`}>{category.name}</span>
+          <span className={`cursor-pointer block ${(index === categories.length - 1) ? 'border-b-0' : 'border-b'} pb-3 mb-3 text-gray-600 hover:text-[#5D4037] transition duration-300`}>{category.name}</span>
         </Link>
       ))}
     </div>

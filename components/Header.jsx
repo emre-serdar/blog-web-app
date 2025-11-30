@@ -26,11 +26,11 @@ const Header = () => {
 
     return (
 
-        <div className=' container mx-auto px-10 mb-8 '>
+        <div className='container mx-auto px-10 mb-8'>
             <div className="border-b  lg:inline-block flex items-center justify-between border-gray-300 py-7  w-full ">
                 <div className='md:float-left block'>
                     <Link scroll={false} href="/">
-                        <span className='cursor-pointer font-bold text-4xl text-gray-800'>Erdi Serdar</span>
+                        <span className='cursor-pointer font-bold text-4xl text-gray-800 hover:text-gray-600 transition duration-300'>Erdi Serdar</span>
                         <p>
                             <span className=' ml-4 text-gray-500 text-sm '> Austro-Libertarianism</span>
                         </p>
@@ -41,12 +41,12 @@ const Header = () => {
                     <ul className=''>
                         {categories.map((category, index) => (
 
-                            <li className='inline'>
-                                <Link className=' ' key={index} href={`/category/${category.slug}`} >
+                            <li className='inline' key={index}>
+                                <Link className=' ' href={`/category/${category.slug}`} >
 
                                     {/* {`${console.log(category.name.toString().toLowerCase() ,router.query.slug)}`} */}
 
-                                    <span className={`md:float-right mt-2 align-middle text-gray-700 ml-4 font-semibold cursor-pointer ${router.query.slug == category.slug && "border-b border-gray-300"}`}>
+                                    <span className={`md:float-right mt-2 align-middle text-gray-700 ml-4 font-semibold cursor-pointer hover:text-[#5D4037] transition duration-300 ${router.query.slug == category.slug && "border-b border-gray-300"}`}>
                                         {category.name}
                                     </span>
 
@@ -66,8 +66,8 @@ const Header = () => {
                 <div className={nav ? ' w-full nav  text-white absolute  mt-3  left-0 flex justify-center text-center z-50' : 'absolute left-[-100%]'}>
                     <ul>
                         {categories.map((category, index) => (
-                            <li className='inline'>
-                                <Link className=' ' key={index} href={`/category/${category.slug}`} >
+                            <li className='inline' key={index}>
+                                <Link className=' ' href={`/category/${category.slug}`} >
                                     <span className={`md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer ${router.query.slug == category.slug && "border-b"}`}>
                                         {category.name}
                                     </span>

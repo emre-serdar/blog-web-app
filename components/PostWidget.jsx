@@ -29,7 +29,7 @@ const PostWidget = ({ categories, slug }) => {
     <div className='bg-gradient shadow-lg rounded-lg p-8 pb-12 mb-8 '>
       {/* home page = no slug
             If there is slug, get Related Post, If there is no slug, get Recent Posts*/}
-      <h3 className="text-xl mb-8 font-semibold border-b pb-4 text-gray-800">{slug ? 'Related Posts' : 'Recent Posts'}</h3>
+      <h3 className="text-xl mb-8 font-semibold border-b pb-4 text-gray-800">{slug ? 'İlgili Yazılar' : 'Son Yazılar'}</h3>
       {relatedPosts.map((post, index) => (
         <div key={index} className="flex items-center w-full mb-4">
           <div className='w-16 flex-none post-widget-img'>
@@ -44,7 +44,7 @@ const PostWidget = ({ categories, slug }) => {
             <p className='text-gray-500 font-xs'>
               {moment(post.date).format('MMM DD, YYYY')}
             </p>
-            <Link href={`/post/${post.slug}`} key={post.title} className="text-md text-gray-700">
+            <Link href={`/post/${post.slug}`} key={post.title} className="text-md text-gray-700 hover:text-[#5D4037] transition duration-300">
               {post.title}
             </Link>
           </div>
