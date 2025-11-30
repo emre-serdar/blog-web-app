@@ -4,43 +4,24 @@ import Link from 'next/link';
 
 const PostDetail = ({ post }) => {
 
-
-
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
-    //object detection, since content may include text, images, bold-text etc.
-    if (obj.bold) {
-      modifiedText = (<b key={index}>{text}</b>);
+    const effectiveType = type || obj.type;
+
+    if (modifiedText === undefined && obj && obj.children && effectiveType !== 'image' && effectiveType !== 'link' && effectiveType !== 'table' && effectiveType !== 'table_body' && effectiveType !== 'table_row' && effectiveType !== 'table_head') {
+      modifiedText = obj.children.map((child, i) => getContentFragment(i, child.text, child, child.type));
     }
 
-    if (obj.italic) {
-      modifiedText = (<em key={index}>{text}</em>);
-    }
-
-    if (obj.underline) {
-      modifiedText = (<u key={index}>{text}</u>);
-    }
-    if (obj.type == 'link') {
-      modifiedText = (<Link key={index} href={obj.href} className='text-stone-700 '>{obj.children[0].text}</Link>);
-
-    }
-    if (obj.type == 'numbered-list') {
-
-      modifiedText = (<ol key={index}>
-        {obj.children.map((obje, index) => <li> {obj.children[index].children[0].children[0].text} </li>)}
-      </ol>)
-    }
-
-
-    //what to return according to objects detected 
-    switch (type) {
+    switch (effectiveType) {
+      case 'heading-one':
+        return <h1 key={index} className="text-3xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h1>;
       case 'heading-two':
-        return <h2 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>;
+        return <h2 key={index} className="text-2xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h2>;
       case 'heading-three':
         return <h3 key={index} className="text-xl font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h3>;
       case 'paragraph':
-        return <p key={index} className="indent-4 mb-8 text-justify">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
+        return <p key={index} className="mb-8">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</p>;
       case 'heading-four':
         return <h4 key={index} className="text-md font-semibold mb-4">{modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>)}</h4>;
       case 'image':
@@ -54,12 +35,100 @@ const PostDetail = ({ post }) => {
             className='mb-3'
           />
         );
+      case 'link':
+        return (
+          <Link key={index} href={obj.href} className='text-blue-600 font-semibold hover:underline'>
+            {obj.children.map((item, i) => getContentFragment(i, item.text, item, item.type))}
+          </Link>
+        );
+      case 'numbered-list':
+        return (
+          <ol key={index} className="list-decimal ml-8 mb-8">
+            {obj.children.map((item, i) => (
+              <li key={i} className="mb-2">
+                {item.children.map((child, j) => {
+                  const children = child.children.map((grandChild, k) => getContentFragment(k, grandChild.text, grandChild));
+                  return getContentFragment(j, children, child, child.type);
+                })}
+              </li>
+            ))}
+          </ol>
+        );
+      case 'bulleted-list':
+        return (
+          <ul key={index} className="list-disc ml-8 mb-8">
+            {obj.children.map((item, i) => (
+              <li key={i} className="mb-2">
+                {item.children.map((child, j) => {
+                  const children = child.children.map((grandChild, k) => getContentFragment(k, grandChild.text, grandChild));
+                  return getContentFragment(j, children, child, child.type);
+                })}
+              </li>
+            ))}
+          </ul>
+        );
+      case 'table':
+        return (
+          <div key={index} className="overflow-x-auto mb-8">
+            <table className="min-w-full border-collapse border border-gray-300">
+              {obj.children.map((child, i) => getContentFragment(i, child.text, child, child.type))}
+            </table>
+          </div>
+        );
+      case 'table_head':
+        return (
+          <thead key={index} className="bg-gray-100">
+            {obj.children.map((child, i) => getContentFragment(i, child.text, child, child.type))}
+          </thead>
+        );
+      case 'table_body':
+        return (
+          <tbody key={index}>
+            {obj.children.map((child, i) => getContentFragment(i, child.text, child, child.type))}
+          </tbody>
+        );
+      case 'table_row':
+        return (
+          <tr key={index} className="border-b border-gray-200">
+            {obj.children.map((child, i) => getContentFragment(i, child.text, child, child.type))}
+          </tr>
+        );
+      case 'table_cell':
+        return (
+          <td key={index} className="p-2 border-r border-gray-200 align-top">
+            {obj.children.map((child, i) => {
+              const children = child.children.map((grandChild, j) => getContentFragment(j, grandChild.text, grandChild));
+              return getContentFragment(i, children, child, child.type);
+            })}
+          </td>
+        );
+      case 'table_header_cell':
+        return (
+          <th key={index} className="p-2 border-r border-gray-200 text-left font-semibold">
+            {obj.children.map((child, i) => {
+              const children = child.children.map((grandChild, j) => getContentFragment(j, grandChild.text, grandChild));
+              return getContentFragment(i, children, child, child.type);
+            })}
+          </th>
+        );
+      case 'list-item-child':
+        return modifiedText.map((item, i) => <React.Fragment key={i}>{item}</React.Fragment>);
       default:
-        return modifiedText;
+        let finalContent = modifiedText;
+        if (obj) {
+          if (obj.bold) {
+            finalContent = (<b key={index}>{finalContent}</b>);
+          }
+          if (obj.italic) {
+            finalContent = (<em key={index}>{finalContent}</em>);
+          }
+          if (obj.underline) {
+            finalContent = (<u key={index}>{finalContent}</u>);
+          }
+        }
+        return finalContent;
     }
   };
-
-
 
   return (
     <div className='bg-gradient shadow-lg rounded-lg lg:p-8 pb-12 mb-8 p-5  '>
